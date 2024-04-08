@@ -19,13 +19,14 @@ exports.loginuser = (req, res) => {
   };
 
 //script to insert data to the database
-exports.signupuser = (req,res)=> {
+exports.signupuser = (req,res) => {
   const {email, username, password} = req.body;
   if (!email || !username || !password ) {
     res.status(400).send('Please fill out all the required fields.');
     return;
   }
-  con.query('INSERT INTO accounts (username, password, email) VALUES (?,?,?)');
+  const sql = 'INSERT INTO accounts (username, password, email) VALUES(?,?,?)';
+  con.query(sql, [email, username, password], (err, result) => {
   if (err) {
     console.error('Error inserting data into MySQL', err);
     res.send("There was an erro with your registration");
@@ -33,4 +34,5 @@ exports.signupuser = (req,res)=> {
   }
   console.log('Data inserted successfully', result);
   res.redirect('/login');
+});
 };
