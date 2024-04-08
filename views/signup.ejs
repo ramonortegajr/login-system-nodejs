@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
-    <title>Login | Node JS</title>
+    <title>Signup | Node JS</title>
 </head>
 <body>
     <div class="logs">
-        <form action="/login" method="POST">
+        <form action="/signup" method="POST">
+        <input type="text" placeholder="Email" id="email" name="email">  
         <input type="text" placeholder="Username" id="username" name="username">  
       <input type="password" placeholder="Password" id="password" name="password">  
-      <a href="/signup" class="forgot">Sign up</a>
-      <input type="submit" value="Sign In">
+      <a href="/login" class="forgot">Already have an account?</a>
+      <input type="submit" value="Signup">
     </form>
     </div>
     <div class="shadow"></div>    

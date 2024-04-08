@@ -10,6 +10,12 @@ app.use(express.static('public'));
 app.get('/login', (req, res) => {
     res.render('login');
 });
+
+//get the signup page
+app.get('/signup', (req, res) => {
+    res.render('signup');
+});
+
 //redirect to dashboard after successful login
 app.get('/home', (req, res) => {
     res.render('home');
