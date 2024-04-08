@@ -1,6 +1,6 @@
 const con = require('../database/db');
  
-//Route to login form 
+//script to check the login to the system
 exports.loginuser = (req, res) => {
     const {username, password} = req.body;
     con.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], (err, result) => {
@@ -16,3 +16,20 @@ exports.loginuser = (req, res) => {
       }
     });
   };
+
+//script to insert data to the database
+exports.signupuser = (req,res)=> {
+  const {email, username, password} = req.body;
+  if (!email || !username || !password ) {
+    res.status(400).send('Please fill out all the required fields.');
+    return;
+  }
+  con.query('INSERT INTO accounts (username, password, email) VALUES (?,?,?)');
+  if (err) {
+    console.error('Error inserting data into MySQL', err);
+    res.send("There was an erro with your registration");
+    return;
+  }
+  console.log('Data inserted successfully', result);
+  res.redirect('/login');
+};
